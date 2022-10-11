@@ -1,0 +1,39 @@
+html {
+    background-image: url(../images/calculator/bg2.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: grid;
+    margin: 2rem 15rem;
+    align-items: center;
+}
+
+form, h2, h3 {
+    display: flex;
+    min-height: 7vh;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    padding: .3rem 1rem;
+    border-radius: .5rem;
+    border-collapse: collapse;
+}
+
+input, select {
+    border: none;
+    background: #F6F5F4;
+    border-radius: .5rem;
+    padding: .75rem 1rem;
+    flex: 1 1 10ch;
+    margin: .5rem;
+}
+
+.black {
+    background: #002A3A;
+    color: #fff;
+}
+

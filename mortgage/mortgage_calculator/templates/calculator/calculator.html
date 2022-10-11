@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+{% load index %}
+<html lang="ru" data-theme="lager">
+    <head>
+        <meta charSet="utf-8"/>
+        <title>Ипотечный калькулятор — рассчитать ипотеку онлайн в 2022 году, расчёт ежемесячного платежа</title>
+        <meta name="robots" content="index, follow"/><meta name="description" content="Калькулятор ипотеки в 2022
+        год."/>
+         <link rel="icon" href="https://s91588.cdn.ngenix.net/shared/static/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'calculator/css/style.css' %}">
+    </head>
+    <body>
+        <h2 class="black">Ипотечный калькулятор</h2>
+        <form action="{% url 'calculator' %}" method="POST">
+            {% csrf_token %}
+            {{ form.cost_estate }}
+            {{ form.initial_amount }}
+            {{ form.payment_term }}
+            {{ form.param_sort }}
+            <input type="submit" value="Показать" class="black">
+        </form>
+            {% if data|index:0|length == 4 %}
+                {% for i in data %}
+                    <h3>{{ i|index:0 }} | Ставка от {{ i|index:1 }}% |
+                        Ежемесячный платеж {{ i|index:2 }} ₽/мес | Переплата {{ i|index:3 }} ₽</h3>
+                {% endfor %}
+            {% else %}
+                {% for i in data %}
+                    <h3>{{ i|index:0 }} | Ставка {{ i|index:1 }} - {{ i|index:2}}% |
+                        Сумма {{ i|index:3 }} -  {{ i|index:4 }} млн. ₽ |
+                        Первоначальный взнос {{ i|index:5 }} - {{ i|index:6 }}%</h3>
+                {% endfor %}
+            {% endif %}
+    </body>
+</html>
